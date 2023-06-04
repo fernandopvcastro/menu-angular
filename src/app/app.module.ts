@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { UserRegistrationComponent } from './user-registration/user-registration.component';
-import { OrganizationComponent } from './organization/organization.component';
-import { ContactComponent } from './contact/contact.component';
-import { UsersGridComponent } from './users-grid/users-grid.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './material.module';
+
+import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
+import { OrganizationComponent } from './pages/organization/organization.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { UsersGridComponent } from './pages/users-grid/users-grid.component';
+
+import { LayoutComponent } from './components/layout/layout.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +19,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserRegistrationComponent,
     OrganizationComponent,
     ContactComponent,
-    UsersGridComponent
+    UsersGridComponent,
+    NavbarComponent,
+    LayoutComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
+  imports: [AppRoutingModule, BrowserAnimationsModule, MaterialModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
