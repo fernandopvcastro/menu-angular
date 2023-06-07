@@ -17,13 +17,11 @@ export class UserRegistrationComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  // Função de validação para verificar se contém apenas números
   onlyNumbersValidator(control: FormControl) {
     const valid = /^\d+$/.test(control.value);
     return valid ? null : { onlyNumbers: true };
   }
 
-  // Função de validação para verificar se possui exatamente 10 dígitos
   exactlyTenDigitsValidator(control: FormControl) {
     const valid = control.value && control.value.length === 10;
     return valid ? null : { exactlyTenDigits: true };
