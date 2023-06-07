@@ -3,13 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-users-grid',
   templateUrl: './users-grid.component.html',
-  styleUrls: ['./users-grid.component.scss']
+  styleUrls: ['./users-grid.component.scss'],
 })
 export class UsersGridComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

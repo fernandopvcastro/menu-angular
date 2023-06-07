@@ -1,3 +1,57 @@
 <div class="content">
-  <p>Cadastro de usuário.</p>
+  <h2 class="page-title">Cadastro</h2>
+  <form
+    (ngSubmit)="submitForm()"
+    [formGroup]="userForm"
+    class="registration-form"
+  >
+    <div class="form_container">
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" formControlName="name" required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Telefone</mat-label>
+        <input
+          matInput
+          type="tel"
+          formControlName="phone"
+          mask="00.00.00"
+          required
+        />
+        <mat-error *ngIf="userForm.get('phone')?.hasError('pattern')"
+          >O telefone precisa ter 11 dígitos numéricos.</mat-error
+        >
+        <mat-error *ngIf="userForm.get('phone')?.hasError('onlyNumbers')"
+          >Apenas números</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Endereço</mat-label>
+        <input matInput type="text" formControlName="address" required />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label class="input-title">Data de Nascimento</mat-label>
+        <input matInput type="date" formControlName="dob" required />
+      </mat-form-field>
+    </div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="userForm.invalid"
+      class="button"
+    >
+      Enviar
+    </button>
+  </form>
 </div>

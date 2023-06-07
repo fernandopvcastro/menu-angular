@@ -33,10 +33,54 @@ body {
     color: #000;
   }
 }
+.page-title {
+  color: #000;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 30px 0;
+  margin: 0 !important;
+  font-size: 30px !important;
+  @media (min-width: 768px) {
+    padding: 50px 0;
+  }
+}
 .content {
-  height: 800px;
+  min-height: calc(100vh - 56px);
+  background-color: #e0dede;
+  padding: 0 20px 50px;
+  @media (min-width: 600px) {
+    min-height: calc(100vh - 64px);
+  }
+  @media (min-width: 1366px) {
+    min-height: 100vh;
+  }
 }
 
 .nav .mat-list-base .mat-list-item .mat-list-item-content {
   padding: 0;
+}
+
+.registration-form {
+  .mat-form-field {
+    &-label {
+      color: #000;
+    }
+    &-underline {
+      background-color: #000;
+    }
+    .input-title {
+      font-size: 18px;
+    }
+  }
+  .mat-input-element {
+    color: #000;
+    &:-internal-autofill-selected {
+      background-color: transparent !important;
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px #e0dede inset !important;
+    }
+  }
 }
