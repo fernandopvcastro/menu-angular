@@ -1,3 +1,64 @@
 table {
   width: 100%;
 }
+.mat {
+  &-elevation-z8 {
+    @media (max-width: 768px) {
+      box-shadow: none;
+    }
+  }
+  &-table {
+    @media (max-width: 768px) {
+      background: transparent;
+      border: 0;
+      vertical-align: middle;
+    }
+  }
+  &-row {
+    background-color: #424242;
+    @media (max-width: 768px) {
+      border-bottom: 10px solid #ddd;
+      display: block;
+      &:nth-child(even) {
+        background: #424242;
+      }
+      &:nth-child(odd) {
+        background: #757575;
+      }
+    }
+  }
+  &-header-row {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  &-header-cell {
+    padding: 0 15px;
+  }
+  &-cell {
+    padding: 0 15px;
+    @media (max-width: 768px) {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      text-align: right;
+      min-height: 50px;
+      padding: 15px;
+      &:before {
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: normal;
+        font-size: 0.85em;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+  &-paginator {
+    padding-top: 10px;
+  }
+}
+.address_col {
+  min-width: 140px;
+}
