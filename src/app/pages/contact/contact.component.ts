@@ -24,6 +24,7 @@ export class ContactComponent implements OnInit {
   submitForm() {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value);
+      this.contactForm.reset();
     }
   }
 }

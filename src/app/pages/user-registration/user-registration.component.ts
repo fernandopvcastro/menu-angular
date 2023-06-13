@@ -4,8 +4,8 @@ import {
   FormGroup,
   Validators,
   FormControl,
-  ReactiveFormsModule,
 } from '@angular/forms';
+import { TableService } from '../../services/table-service';
 
 @Component({
   selector: 'app-user-registration',
@@ -15,15 +15,18 @@ import {
 export class UserRegistrationComponent implements OnInit {
   userForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private tableService: TableService
+  ) {}
 
   onlyNumbersValidator(control: FormControl) {
     const valid = /^\d+$/.test(control.value);
     return valid ? null : { onlyNumbers: true };
   }
 
-  exactlyTenDigitsValidator(control: FormControl) {
-    const valid = control.value && control.value.length === 10;
+  exactlyElevenDigitsValidator(control: FormControl) {
+    const valid = control.value && control.value.length === 11;
     return valid ? null : { exactlyTenDigits: true };
   }
 
@@ -36,17 +39,27 @@ export class UserRegistrationComponent implements OnInit {
         [
           Validators.required,
           this.onlyNumbersValidator,
-          this.exactlyTenDigitsValidator,
+          this.exactlyElevenDigitsValidator,
         ],
       ],
       address: ['', Validators.required],
-      dob: ['', Validators.required],
+      born: ['', Validators.required],
     });
   }
 
   submitForm() {
     if (this.userForm.valid) {
-      console.log(this.userForm.value);
+      const formData = this.userForm.value;
+      const bornDate = new Date(formData.born);
+      console.log('Dados do Formulário: ', formData);
+
+      const dataToAdd = {
+        ...formData,
+        born: bornDate,
+      };
+
+      this.tableService.addFormData(dataToAdd);
+      this.userForm.reset();
     }
   }
 }
